@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+
+<button onclick="window.location.href='dashboard.html'" id="dashboard">
+🏠 Dashboard
+</button>
+
+<button onclick="window.location.href='contacts.html'" id="Emergency">
+📞 Contacts
+</button>
+
+<button onclick="window.location.href='history.html'" id="Alert">
+📜 History
+</button>
+
+<button onclick="window.location.href='volunteer.html'">
+🙋 Volunteers
+</button>
+
+<button onclick="window.location.href='admin.html'" id="Admin">
+🛡 Admin
+</button>
+
+</div>
+
+<hr>
+<div class="container">
+
+<h1>Admin Dashboard</h1>
+
+
+<h2>Statistics</h2>
+
+<div id="stats"></div>
+
+<hr>
+
+<h2>Registered Users</h2>
+
+<div id="users"></div>
+
+<hr>
+
+<footer>
+    <p>Women Safety & Emergency Assistance Platform © 2026</p>
+</footer>
+</div>
+
+
+<script>
+
+fetch("http://localhost:5000/stats")
+.then(res => res.json())
+.then(data => {
+
+document.getElementById("stats").innerHTML = `
+<p>Total Users: ${data.totalUsers}</p>
+<p>Total Alerts: ${data.totalAlerts}</p>
+<p>Total Contacts: ${data.totalContacts}</p>
+`;
+
+});
+
+fetch("http://localhost:5000/users")
+.then(res=>res.json())
+.then(data=>{
+
+let output="";
+
+data.forEach(user=>{
+
+output += `
+<p>
+${user.name}
+<br>
+${user.email}
+</p>
+<hr>
+`;
+
+});
+
+document.getElementById("users").innerHTML =
+output;
+
+});
+
+
+</script>
+
+</body>
+</html>

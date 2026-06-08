@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <h1>Women Safety Dashboard</h1>
+
+<div class="card">
+    <h3>Total Users</h3>
+    <p id="totalUsers">0</p>
+</div>
+
+<div class="card">
+    <h3>Total Alerts</h3>
+    <p id="totalAlerts">0</p>
+</div>
+
+<div class="card">
+   <h3>Total Contacts</h3>
+   <p id="totalContacts">0</p>
+</div>
+
+<div class="card">
+   <h3>Total Volunteers</h3>
+   <p id="totalVolunteers">0</p>
+</div>
+
+<br>
+
+    <button onclick="window.location.href='contacts.html'" id="Emergency">
+📞 Emergency Contacts
+</button>
+
+<br><br>
+
+<button onclick="window.location.href='history.html'" id="Alert">
+📜 Alert History
+</button>
+
+<br><br>
+
+<button onclick="window.location.href='volunteer.html'">
+🙋 Volunteers
+</button>
+
+<br><br>
+
+<button onclick="window.location.href='admin.html'" id="Admin">
+🛡 Admin Dashboard
+</button>
+
+<br><br>
+
+<button onclick="window.location.href='index.html'" id="Home">
+🏠 Home
+</button>
+
+<br><br>
+
+<button onclick="logout()" id="logout">
+🚪 Logout
+</button>
+
+<hr>
+
+<footer>
+    <p>Women Safety & Emergency Assistance Platform © 2026</p>
+</footer>
+
+</div>
+ <script>
+
+fetch("http://localhost:5000/stats")
+.then(res=>res.json())
+.then(data=>{
+
+document.getElementById("totalUsers").innerHTML =
+data.totalUsers;
+
+document.getElementById("totalAlerts").innerHTML =
+data.totalAlerts;
+
+document.getElementById("totalContacts").innerHTML =
+data.totalContacts;
+
+document.getElementById("totalVolunteers").innerHTML =
+data.totalVolunteers;
+
+});
+
+function logout(){
+window.location.href="login.html";
+}
+
+</script>
+
+</body>
+</html>

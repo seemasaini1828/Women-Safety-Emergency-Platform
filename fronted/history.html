@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+
+<button onclick="window.location.href='dashboard.html'" id="dashboard">
+🏠 Dashboard
+</button>
+
+<button onclick="window.location.href='contacts.html'" id="Emergency">
+📞 Contacts
+</button>
+
+<button onclick="window.location.href='history.html'" id="Alert">
+📜 History
+</button>
+
+<button onclick="window.location.href='volunteer.html'">
+🙋 Volunteers
+</button>
+
+<button onclick="window.location.href='admin.html'" id="Admin">
+🛡 Admin
+</button>
+
+</div>
+
+<hr>
+<div class="container">
+<h1>Alert History</h1>
+
+<table border="1" width="100%">
+<thead>
+<tr>
+<th>Latitude</th>
+<th>Longitude</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody id="history">
+</tbody>
+
+</table>
+<hr>
+
+<footer>
+    <p>Women Safety & Emergency Assistance Platform © 2026</p>
+</footer>
+</div>
+
+<script>
+
+fetch("http://localhost:5000/alerts")
+.then(res => res.json())
+.then(data => {
+
+let output = "";
+
+data.forEach(alert => {
+
+output += `
+<tr>
+<td>${alert.latitude}</td>
+<td>${alert.longitude}</td>
+<td>${alert.status}</td>
+<td>${new Date(alert.createdAt).toLocaleString()}</td>
+</tr>
+`;
+
+});
+
+document.getElementById("history").innerHTML = output;
+
+});
+
+</script>
+
+</body>
+</html>

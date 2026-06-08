@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer Registration</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+
+<button onclick="window.location.href='dashboard.html'" id="dashboard">
+🏠 Dashboard
+</button>
+
+<button onclick="window.location.href='contacts.html'" id="Emergency">
+📞 Contacts
+</button>
+
+<button onclick="window.location.href='history.html'" id="Alert">
+📜 History
+</button>
+
+<button onclick="window.location.href='volunteer.html'">
+🙋 Volunteers
+</button>
+
+<button onclick="window.location.href='admin.html'" id="Admin">
+🛡 Admin
+</button>
+
+</div>
+
+<hr>
+
+<div class="container">
+
+<h1>Volunteer Registration</h1>
+
+<input type="text"
+id="name"
+placeholder="Volunteer Name">
+
+<input type="text"
+id="phone"
+placeholder="Phone Number">
+
+<input type="text"
+id="area"
+placeholder="Area">
+
+<button onclick="registerVolunteer()">
+Register Volunteer
+</button>
+
+<hr>
+
+<h2>Registered Volunteers</h2>
+
+<div id="volunteers"></div>
+
+<hr>
+
+<h2>Emergency Alerts</h2>
+
+<div id="alerts"></div>
+
+  
+<hr>
+
+    
+<footer>
+        
+    <p>Women Safety & Emergency Assistance Platform © 2026</p>
+    
+</footer>
+
+</div>
+
+<script src="volunteer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+body{
+font-family: Arial, sans-serif;
+background:#F8FAFC;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+min-height:100vh;
+padding:20px;
+color:#1F2937;
+}
+
+.container{
+background:#FFFFFF;
+padding:30px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+text-align:center;
+width:500px;
+}
+
+input{
+width:90%;
+padding:12px;
+margin:10px;
+border:1px solid #E5E7EB;
+border-radius:8px;
+}
+
+
+.sos-btn{
+background:#DC2626;
+color:white;
+font-size:22px;
+padding:22px;
+border:none;
+border-radius:50%;
+}
+
+h1{
+color:#5B21B6;
+margin-bottom:20px;
+}
+
+h2{
+color:#4F46E5;
+font-size:24px;
+font-weight:700;
+margin:20px 0;
+padding-bottom:8px;
+border-bottom:2px solid #E5E7EB;
+text-align:center;
+}
+
+h3{
+color:#2563EB; 
+}
+#register{
+    background:#6D28D9;
+}
+#dashboard{
+    background:#2563EB;
+}
+#Emergency{
+    background:#14B8A6; 
+}
+#Alert{
+    background:#8B5CF6;
+}
+#Admin{
+    background:#4F46E5;
+    
+}
+#Home{
+   background:#10B981;
+}
+#logout{
+    background: #EF4444;
+}
+
+#addContactBtn{
+background:#10B981; 
+color:white;
+}
+
+#deleteContactBtn{
+background:#EF4444; 
+color:white;
+}
+
+button{
+background:#A78BFA;
+color:white;
+border:none;
+border-radius:8px;
+padding:14px 20px;
+cursor:pointer;
+font-weight:bold;
+transition:all 0.3s ease;
+}
+
+
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+
+}
+
+#status{
+margin-top:15px;
+font-weight:bold;
+color:green;
+}
+
+p{
+padding:10px;
+background:#f8f9fa;
+border-radius:5px;
+}
+
+.card{
+background:white;
+padding:15px;
+margin:10px;
+border-radius:10px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.card h3{
+margin:0;
+}
+
+.card p{
+font-size:24px;
+font-weight:bold;
+}
+
+.navbar{
+margin-bottom:20px;
+}
+
+.navbar button{
+margin:5px;
+}
+
+footer{
+margin-top:20px;
+text-align:center;
+font-size:14px;
+color:#6B7280;
+}
