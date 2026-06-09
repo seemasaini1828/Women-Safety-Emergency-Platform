@@ -12,7 +12,7 @@ document.getElementById("phone").value;
 const relation =
 document.getElementById("relation").value;
 
-fetch("http://localhost:5000/add-contact",{
+fetch("https://women-safety-backend-eyq2.onrender.com/add-contact",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -33,7 +33,7 @@ alert(data.message);
 
 function deleteContact(id){
 
-fetch(`http://localhost:5000/contact/${id}`,{
+fetch(`https://women-safety-backend-eyq2.onrender.com/contact/${id}`,{
 method:"DELETE"
 })
 .then(res=>res.json())
@@ -49,7 +49,7 @@ loadContacts();
 
 function loadContacts(){
 
-fetch("http://localhost:5000/contacts")
+fetch("https://women-safety-backend-eyq2.onrender.com/contacts")
 .then(res=>res.json())
 .then(data=>{
 

@@ -9,7 +9,7 @@ document.getElementById("phone").value;
 const area =
 document.getElementById("area").value;
 
-fetch("http://localhost:5000/volunteer",{
+fetch("https://women-safety-backend-eyq2.onrender.com/volunteer",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -33,7 +33,7 @@ loadVolunteers();
 
 function loadVolunteers(){
 
-fetch("http://localhost:5000/volunteers")
+fetch("https://women-safety-backend-eyq2.onrender.com/volunteers")
 .then(res=>res.json())
 .then(data=>{
 
@@ -67,7 +67,7 @@ loadVolunteers();
 
 function loadAlerts(){
 
-fetch("http://localhost:5000/alerts")
+fetch("https://women-safety-backend-eyq2.onrender.com/alerts")
 .then(res=>res.json())
 .then(data=>{
 
@@ -86,7 +86,7 @@ Status: ${alert.status}
 
 <button onclick="acceptAlert('${alert._id}')">
 Accept Alert
-</button>
+</button>i
 
 <button onclick="completeAlert('${alert._id}')">
 Complete Alert
@@ -107,7 +107,7 @@ output;
 
 function acceptAlert(id){
 
-fetch(`http://localhost:5000/alert/${id}`,{
+fetch(`https://women-safety-backend-eyq2.onrender.com/alert/${id}`,{
 
 method:"PUT",
 
@@ -135,7 +135,7 @@ loadAlerts();
 
 function completeAlert(id){
 
-fetch(`http://localhost:5000/alert/${id}`,{
+fetch(`https://women-safety-backend-eyq2.onrender.com/alert/${id}`,{
 
 method:"PUT",
 

@@ -6,7 +6,7 @@ document.getElementById("email").value;
 const password =
 document.getElementById("password").value;
 
-fetch("http://localhost:5000/login",{
+fetch("https://women-safety-backend-eyq2.onrender.com/login",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"

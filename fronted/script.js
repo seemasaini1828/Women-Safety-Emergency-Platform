@@ -5,7 +5,7 @@ const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
 const phone = document.getElementById("phone").value;
 
-fetch("http://localhost:5000/register",{
+fetch("https://women-safety-backend-eyq2.onrender.com/register",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -25,7 +25,7 @@ navigator.geolocation.getCurrentPosition(position=>{
 const lat = position.coords.latitude;
 const lng = position.coords.longitude;
 
-fetch("http://localhost:5000/sos",{
+fetch("https://women-safety-backend-eyq2.onrender.com/sos",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
