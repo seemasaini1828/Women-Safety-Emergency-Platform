@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -11,14 +12,13 @@ app.get("/", (req, res) => {
     res.send("Women Safety Backend Running Successfully");
 });
 
-mongoose.connect("mongodb+srv://sainiseema1828_db_user:4RCLr-JSPUAr3SB@cluster0.b0qgguu.mongodb.net/?appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("MongoDB Connected Successfully");
 })
 .catch((err) => {
     console.log("MongoDB Error:", err);
 });
-
 
 const User = require("./models/User");
 const Alert = require("./models/Alert");
@@ -85,22 +85,6 @@ message:"Contact Deleted Successfully"
 
 });
 
-// app.post("/register", async(req,res)=>{
-
-// const user = new User({
-// name:req.body.name,
-// email:req.body.email,
-// password:req.body.password,
-// phone:req.body.phone
-// });
-
-// await user.save();
-
-// res.json({
-// message:"User Registered Successfully"
-// });
-
-// });
 
 app.post("/register", async (req, res) => {
   try {
