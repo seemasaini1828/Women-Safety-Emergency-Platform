@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
     res.send("Women Safety Backend Running Successfully");
 });
 
-mongoose.connect("mongodb+srv://sainiseema1828_db_user:jrF7BDamDUdyu8fH@cluster0.b0qgguu.mongodb.net/?appName=Cluster0")
+mongoose.connect("mongodb+srv://sainiseema1828_db_user:4RCLr-JSPUAr3SB@cluster0.b0qgguu.mongodb.net/?appName=Cluster0")
 .then(() => {
     console.log("MongoDB Connected Successfully");
 })
