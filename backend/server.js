@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
     res.send("Women Safety Backend Running Successfully");
 });
 
-mongoose.connect("mongodb+srv://sainiseema1828_db_user:jrF7BDamDUdyu8fH@cluster0.b0qgguu.mongodb.net/?appName=Cluster0")
+mongoose.connect("mongodb+srv://sainiseema1828_db_user:4RCLr-JSPUAr3SB@cluster0.b0qgguu.mongodb.net/?appName=Cluster0")
 .then(() => {
     console.log("MongoDB Connected Successfully");
 })
@@ -19,9 +19,6 @@ mongoose.connect("mongodb+srv://sainiseema1828_db_user:jrF7BDamDUdyu8fH@cluster0
     console.log("MongoDB Error:", err);
 });
 
-// mongoose.connect(
-// "mongodb://127.0.0.1:27017/womenSafetyDB"
-// );
 
 const User = require("./models/User");
 const Alert = require("./models/Alert");
@@ -88,21 +85,47 @@ message:"Contact Deleted Successfully"
 
 });
 
-app.post("/register", async(req,res)=>{
+// app.post("/register", async(req,res)=>{
 
-const user = new User({
-name:req.body.name,
-email:req.body.email,
-password:req.body.password,
-phone:req.body.phone
-});
+// const user = new User({
+// name:req.body.name,
+// email:req.body.email,
+// password:req.body.password,
+// phone:req.body.phone
+// });
 
-await user.save();
+// await user.save();
 
-res.json({
-message:"User Registered Successfully"
-});
+// res.json({
+// message:"User Registered Successfully"
+// });
 
+// });
+
+app.post("/register", async (req, res) => {
+  try {
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      phone: req.body.phone
+    });
+
+    await user.save();
+
+    res.json({
+      success: true,
+      message: "User Registered Successfully"
+    });
+
+  } catch (error) {
+    console.log("Register Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
 });
 
 app.post("/sos", async(req,res)=>{
@@ -195,7 +218,8 @@ message:"Alert Updated Successfully"
 
 });
 
-app.listen(5000,()=>{
-console.log("Server Running on Port 5000");
-});
+const PORT = process.env.PORT || 5000;
 
+app.listen(PORT, () => {
+  console.log(`Server Running on Port ${PORT}`);
+});
