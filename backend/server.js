@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -11,17 +12,13 @@ app.get("/", (req, res) => {
     res.send("Women Safety Backend Running Successfully");
 });
 
-mongoose.connect("mongodb+srv://sainiseema1828_db_user:4RCLr-JSPUAr3SB@cluster0.b0qgguu.mongodb.net/?appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("MongoDB Connected Successfully");
 })
 .catch((err) => {
     console.log("MongoDB Error:", err);
 });
-
-// mongoose.connect(
-// "mongodb://127.0.0.1:27017/womenSafetyDB"
-// );
 
 const User = require("./models/User");
 const Alert = require("./models/Alert");
