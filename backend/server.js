@@ -88,21 +88,47 @@ message:"Contact Deleted Successfully"
 
 });
 
-app.post("/register", async(req,res)=>{
+// app.post("/register", async(req,res)=>{
 
-const user = new User({
-name:req.body.name,
-email:req.body.email,
-password:req.body.password,
-phone:req.body.phone
-});
+// const user = new User({
+// name:req.body.name,
+// email:req.body.email,
+// password:req.body.password,
+// phone:req.body.phone
+// });
 
-await user.save();
+// await user.save();
 
-res.json({
-message:"User Registered Successfully"
-});
+// res.json({
+// message:"User Registered Successfully"
+// });
 
+// });
+
+app.post("/register", async (req, res) => {
+  try {
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      phone: req.body.phone
+    });
+
+    await user.save();
+
+    res.json({
+      success: true,
+      message: "User Registered Successfully"
+    });
+
+  } catch (error) {
+    console.log("Register Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
 });
 
 app.post("/sos", async(req,res)=>{
@@ -195,7 +221,9 @@ message:"Alert Updated Successfully"
 
 });
 
-app.listen(5000,()=>{
-console.log("Server Running on Port 5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server Running on Port ${PORT}`);
 });
 
