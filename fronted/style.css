@@ -179,6 +179,50 @@ body{
     padding:0;
 }
 
+/* ================= Statistics ================= */
+
+.stats{
+    width:90%;
+    max-width:1200px;
+    margin:70px auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.stat-card{
+    background:linear-gradient(135deg,#6D28D9,#4F46E5);
+    color:white;
+    padding:35px 20px;
+    border-radius:20px;
+    text-align:center;
+    transition:.3s;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+}
+
+.stat-card i{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.stat-card h3{
+    font-size:34px;
+    margin-bottom:10px;
+    color:white;
+}
+
+.stat-card p{
+    background:none;
+    color:white;
+    padding:0;
+}
+
+/* ================= Responsive CSS ================= */
+
 @media(max-width:992px){
 
 .feature-grid{
@@ -191,6 +235,22 @@ grid-template-columns:repeat(2,1fr);
 
 .feature-grid{
 grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:992px){
+
+.stats{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.stats{
+    grid-template-columns:1fr;
 }
 
 }
