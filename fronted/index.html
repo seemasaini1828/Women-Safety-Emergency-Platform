@@ -148,44 +148,40 @@
 
 <section id="register" class="register-section">
 
-<h2>Create Your Account</h2>
+    <h2>Create Your Account</h2>
 
-<div class="container">
+    <div class="register-card">
 
-<input type="text" id="name" placeholder="Full Name">
+        <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="name" placeholder="Full Name">
+        </div>
 
-<input type="email" id="email" placeholder="Email">
+        <div class="input-group">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" id="email" placeholder="Email Address">
+        </div>
 
-<input type="password" id="password" placeholder="Password">
+        <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="password" placeholder="Password">
+        </div>
 
-<input type="text" id="phone" placeholder="Phone Number">
+        <div class="input-group">
+            <i class="fa-solid fa-phone"></i>
+            <input type="text" id="phone" placeholder="Phone Number">
+        </div>
 
-<button onclick="registerUser()" id="registerBtn">
+        <button onclick="registerUser()" class="register-btn">
+            Create Account
+        </button>
 
-Register
+        <p class="login-text">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </p>
 
-</button>
-
-<button onclick="window.location.href='login.html'">
-
-Already have an account? Login
-
-</button>
-
-</div>
-
-</section>
-<section class="sos-section">
-
-<h2>Emergency Assistance</h2>
-
-<button class="sos-btn" onclick="sendSOS()">
-
-🚨 SOS
-
-</button>
-
-<p id="status"></p>
+    </div>
 
 </section>
 
