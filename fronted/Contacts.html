@@ -3,64 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <linK rel="stylesheet " href="style.css">
+    <title>Emergency Contacts</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="navbar">
 
-<button onclick="window.location.href='dashboard.html'" id="dashboard">
-🏠 Dashboard
-</button>
+<header class="dash-navbar">
 
-<button onclick="window.location.href='contacts.html'" id="Emergency">
-📞 Contacts
-</button>
+    <div class="logo">📞 Emergency Contacts</div>
 
-<button onclick="window.location.href='history.html'" id="Alert">
-📜 History
-</button>
+    <a href="dashboard.html" class="back-btn">⬅ Back</a>
 
-<button onclick="window.location.href='volunteer.html'">
-🙋 Volunteers
-</button>
+</header>
 
-<button onclick="window.location.href='admin.html'" id="Admin">
-🛡 Admin
-</button>
+<section class="contacts">
 
-</div>
+    <h2>Manage Your Contacts</h2>
 
-<hr>
+    <div class="contact-card">
 
-<div class="container">
-    <h1>Emergency Contacts</h1>
+        <input type="text" id="cname" placeholder="Contact Name">
+        <input type="text" id="cphone" placeholder="Phone Number">
 
-<input type="email" id="userEmail" placeholder="Your Email">
+        <button onclick="addContact()">Add Contact</button>
 
-<input type="text" id="name" placeholder="Contact Name">
+    </div>
 
-<input type="text" id="phone" placeholder="Phone Number">
+    <div id="contactList"></div>
 
-<input type="text" id="relation" placeholder="Relation">
+</section>
 
-<button onclick="addContact()"  id="addContactBtn">
-Add Contact
-</button>
-
-<hr>
-
-<h2>Saved Contacts</h2>
-
-<div id="contacts"></div>
-
-<hr>
-
-<footer>
-    <p>Women Safety & Emergency Assistance Platform © 2026</p>
-</footer>
-
-</div>
 <script src="Contacts.js"></script>
 
 </body>
