@@ -3,34 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login</title>
-<link rel="stylesheet" href="style.css">
+    <title>Login - Women Safety</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
+<section class="login-section">
 
-<h1>Login</h1>
+    <h2>Login to Your Account</h2>
 
-<input type="email"
-id="email"
-placeholder="Enter Email">
+    <div class="login-card">
 
-<input type="password"
-id="password"
-placeholder="Enter Password">
+        <div class="input-group">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" id="loginEmail" placeholder="Email Address">
+        </div>
 
-<button onclick="loginUser()">
-Login
-</button>
+        <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="loginPassword" placeholder="Password">
+        </div>
 
-<hr>
+        <button class="login-btn" onclick="loginUser()">
+            Login
+        </button>
 
-<footer>
-    <p>Women Safety & Emergency Assistance Platform © 2026</p>
-</footer>
+        <p class="login-text">
+            Don't have an account?
+            <a href="index.html#register">Register</a>
+        </p>
 
-</div>
+    </div>
+
+</section>
 
 <script src="login.js"></script>
 
