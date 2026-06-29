@@ -12,7 +12,7 @@ document.getElementById("phone").value;
 const relation =
 document.getElementById("relation").value;
 
-fetch("https://women-safety-backend-eyq2.onrender.com/add-contact",{
+fetch("https://women-safetd-eyq2.onrender.comy-backen/add-contact",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
