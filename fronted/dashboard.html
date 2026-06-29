@@ -3,50 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Women Safety</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="dash-navbar">
+<header class="navbar">
 
-    <div class="logo">🛡 Women Safety</div>
+    <div class="logo">🛡 Women Safety Dashboard</div>
 
-    <button onclick="logout()" class="logout-btn">Logout</button>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="Contacts.html">Contacts</a>
+        <a href="history.html">History</a>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </nav>
 
 </header>
 
 <section class="dashboard">
 
-    <h2>Welcome to Your Dashboard</h2>
+    <h2>Welcome to Dashboard</h2>
 
-    <div class="dash-grid">
+    <div class="card-container">
 
-        <div class="dash-card">
-            <h3>Profile</h3>
-            <p>Manage your personal details</p>
+        <div class="card">
+            <h3>🚨 SOS Alert</h3>
+            <p>Send emergency alert instantly</p>
+            <button onclick="sendSOS()">Send SOS</button>
         </div>
 
-        <div class="dash-card">
-            <h3>Emergency Contacts</h3>
-            <p>Add or update trusted contacts</p>
+        <div class="card">
+            <h3>📞 Contacts</h3>
+            <p>Manage emergency contacts</p>
+            <button onclick="window.location.href='Contacts.html'">Open</button>
         </div>
 
-        <div class="dash-card">
-            <h3>SOS History</h3>
-            <p>View past emergency alerts</p>
+        <div class="card">
+            <h3>📊 History</h3>
+            <p>View past SOS alerts</p>
+            <button onclick="window.location.href='history.html'">View</button>
         </div>
 
-        <div class="dash-card">
-            <h3>Safety Status</h3>
-            <p>Active protection enabled</p>
+        <div class="card">
+            <h3>🤝 Volunteer</h3>
+            <p>Join safety volunteers</p>
+            <button onclick="window.location.href='volunteer.html'">Join</button>
         </div>
 
     </div>
