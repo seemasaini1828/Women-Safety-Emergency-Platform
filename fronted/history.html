@@ -3,85 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alert History</title>
+    <title>SOS History</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="navbar">
 
-<button onclick="window.location.href='dashboard.html'" id="dashboard">
-🏠 Dashboard
-</button>
+<header class="dash-navbar">
 
-<button onclick="window.location.href='contacts.html'" id="Emergency">
-📞 Contacts
-</button>
+    <div class="logo">📊 SOS History</div>
 
-<button onclick="window.location.href='history.html'" id="Alert">
-📜 History
-</button>
+    <a href="dashboard.html" class="back-btn">⬅ Back</a>
 
-<button onclick="window.location.href='volunteer.html'">
-🙋 Volunteers
-</button>
+</header>
 
-<button onclick="window.location.href='admin.html'" id="Admin">
-🛡 Admin
-</button>
+<section class="history">
 
-</div>
+    <h2>Your Emergency Alerts</h2>
 
-<hr>
-<div class="container">
-<h1>Alert History</h1>
+    <div id="historyList"></div>
 
-<table border="1" width="100%">
-<thead>
-<tr>
-<th>Latitude</th>
-<th>Longitude</th>
-<th>Status</th>
-<th>Date</th>
-</tr>
-</thead>
+</section>
 
-<tbody id="history">
-</tbody>
-
-</table>
-<hr>
-
-<footer>
-    <p>Women Safety & Emergency Assistance Platform © 2026</p>
-</footer>
-</div>
-
-<script>
-
-fetch("https://women-safety-backend-eyq2.onrender.com/alerts")
-.then(res => res.json())
-.then(data => {
-
-let output = "";
-
-data.forEach(alert => {
-
-output += `
-<tr>
-<td>${alert.latitude}</td>
-<td>${alert.longitude}</td>
-<td>${alert.status}</td>
-<td>${new Date(alert.createdAt).toLocaleString()}</td>
-</tr>
-`;
-
-});
-
-document.getElementById("history").innerHTML = output;
-
-});
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

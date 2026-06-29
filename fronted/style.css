@@ -488,6 +488,40 @@ body{
     font-weight:600;
 }
 
+/* ================= HISTORY ================= */
+
+.history{
+    width:90%;
+    max-width:900px;
+    margin:60px auto;
+    text-align:center;
+}
+
+.history-card{
+    background:white;
+    padding:20px;
+    margin:15px 0;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    text-align:left;
+    transition:.3s;
+}
+
+.history-card:hover{
+    transform:translateY(-5px);
+}
+
+.history-card h3{
+    color:#4F46E5;
+    margin-bottom:5px;
+}
+
+.history-card p{
+    background:none;
+    padding:0;
+    color:#555;
+}
+
 /* ================= Responsive CSS ================= */
 
 @media(max-width:992px){

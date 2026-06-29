@@ -29,18 +29,23 @@ function registerUser(){
 
 function sendSOS(){
 
-    if(!navigator.geolocation){
-        alert("Geolocation not supported in your browser");
-        return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-    
-    (position)=>{
+    navigator.geolocation.getCurrentPosition(position=>{
 
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
+        const sosData = {
+            time: new Date().toLocaleString(),
+            latitude: lat,
+            longitude: lng
+        };
+
+        // Save in localStorage
+        let history = JSON.parse(localStorage.getItem("sosHistory")) || [];
+        history.push(sosData);
+        localStorage.setItem("sosHistory", JSON.stringify(history));
+
+        // Backend call
         fetch("https://women-safety-backend-eyq2.onrender.com/sos",{
             method:"POST",
             headers:{
@@ -50,22 +55,11 @@ function sendSOS(){
                 latitude:lat,
                 longitude:lng
             })
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            document.getElementById("status").innerHTML =
-            "🚨 Emergency Alert Sent Successfully!";
-        })
-        .catch(err=>{
-            document.getElementById("status").innerHTML =
-            "❌ Failed to send SOS!";
         });
 
-    },
+        document.getElementById("status").innerText =
+        "🚨 SOS Sent Successfully!";
 
-    (error)=>{
-        document.getElementById("status").innerHTML =
-        "❌ Location access denied!";
     });
 
 }
@@ -73,4 +67,26 @@ function sendSOS(){
 function logout(){
     localStorage.removeItem("token");
     window.location.href = "login.html";
+}
+
+if(window.location.pathname.includes("history.html")){
+
+    const history = JSON.parse(localStorage.getItem("sosHistory")) || [];
+
+    const container = document.getElementById("historyList");
+
+    history.reverse().forEach(item=>{
+
+        const div = document.createElement("div");
+        div.className = "history-card";
+
+        div.innerHTML = `
+            <h3>🚨 Emergency Alert</h3>
+            <p>📅 Time: ${item.time}</p>
+            <p>📍 Latitude: ${item.latitude}</p>
+            <p>📍 Longitude: ${item.longitude}</p>
+        `;
+
+        container.appendChild(div);
+    });
 }
