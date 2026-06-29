@@ -3,102 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Women Safety Dashboard</title>
+    <title>Dashboard - Women Safety</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
 
-    <h1>Women Safety Dashboard</h1>
+<header class="dash-navbar">
 
-<div class="card">
-    <h3>Total Users</h3>
-    <p id="totalUsers">0</p>
-</div>
+    <div class="logo">🛡 Women Safety</div>
 
-<div class="card">
-    <h3>Total Alerts</h3>
-    <p id="totalAlerts">0</p>
-</div>
+    <button onclick="logout()" class="logout-btn">Logout</button>
 
-<div class="card">
-   <h3>Total Contacts</h3>
-   <p id="totalContacts">0</p>
-</div>
+</header>
 
-<div class="card">
-   <h3>Total Volunteers</h3>
-   <p id="totalVolunteers">0</p>
-</div>
+<section class="dashboard">
 
-<br>
+    <h2>Welcome to Your Dashboard</h2>
 
-    <button onclick="window.location.href='contacts.html'" id="Emergency">
-📞 Emergency Contacts
-</button>
+    <div class="dash-grid">
 
-<br><br>
+        <div class="dash-card">
+            <h3>Profile</h3>
+            <p>Manage your personal details</p>
+        </div>
 
-<button onclick="window.location.href='history.html'" id="Alert">
-📜 Alert History
-</button>
+        <div class="dash-card">
+            <h3>Emergency Contacts</h3>
+            <p>Add or update trusted contacts</p>
+        </div>
 
-<br><br>
+        <div class="dash-card">
+            <h3>SOS History</h3>
+            <p>View past emergency alerts</p>
+        </div>
 
-<button onclick="window.location.href='volunteer.html'">
-🙋 Volunteers
-</button>
+        <div class="dash-card">
+            <h3>Safety Status</h3>
+            <p>Active protection enabled</p>
+        </div>
 
-<br><br>
+    </div>
 
-<button onclick="window.location.href='admin.html'" id="Admin">
-🛡 Admin Dashboard
-</button>
+</section>
 
-<br><br>
-
-<button onclick="window.location.href='index.html'" id="Home">
-🏠 Home
-</button>
-
-<br><br>
-
-<button onclick="logout()" id="logout">
-🚪 Logout
-</button>
-
-<hr>
-
-<footer>
-    <p>Women Safety & Emergency Assistance Platform © 2026</p>
-</footer>
-
-</div>
- <script>
-
-fetch("https://women-safety-backend-eyq2.onrender.com/stats")
-.then(res=>res.json())
-.then(data=>{
-
-document.getElementById("totalUsers").innerHTML =
-data.totalUsers;
-
-document.getElementById("totalAlerts").innerHTML =
-data.totalAlerts;
-
-document.getElementById("totalContacts").innerHTML =
-data.totalContacts;
-
-document.getElementById("totalVolunteers").innerHTML =
-data.totalVolunteers;
-
-});
-
-function logout(){
-window.location.href="login.html";
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
