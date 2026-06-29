@@ -111,10 +111,28 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:350px;
+}
+
+.hero-image i{
+    font-size:180px;
+    color:#7C3AED;
     background:#EEF2FF;
-    border-radius:20px;
-    font-size:32px;
-    color:#5B21B6;
-    font-weight:700;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 15px 40px rgba(124,58,237,.25);
+}
+
+.btn-primary,
+.btn-secondary{
+    transition:.3s;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
 }
