@@ -288,6 +288,75 @@ body{
     font-weight:600;
 }
 
+/* ================= SOS SECTION ================= */
+
+.sos-section{
+    width:90%;
+    max-width:800px;
+    margin:80px auto;
+    text-align:center;
+}
+
+.sos-card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.sos-card p{
+    background:none;
+    padding:0;
+    color:#555;
+    margin-bottom:20px;
+}
+
+/* SOS Button */
+.sos-btn{
+    background:#DC2626;
+    color:white;
+    font-size:20px;
+    padding:20px 40px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+    font-weight:bold;
+}
+
+/* Hover effect */
+.sos-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 25px rgba(220,38,38,.4);
+}
+
+/* Pulse Animation */
+.sos-btn::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(255,255,255,0.3);
+    top:0;
+    left:0;
+    border-radius:50px;
+    transform:scale(0);
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(0);
+        opacity:1;
+    }
+    100%{
+        transform:scale(1.5);
+        opacity:0;
+    }
+}
+
 /* ================= Responsive CSS ================= */
 
 @media(max-width:992px){
