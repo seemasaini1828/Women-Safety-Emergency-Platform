@@ -11,35 +11,170 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <linK rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
-    <h1>Women Safety & Emergency Assistance</h1>
 
-    <input type="text" id="name" placeholder="Enter Name">
+    <!-- ================= NAVBAR ================= -->
 
-    <input type="email" id="email" placeholder="Enter Email">
+    <header class="navbar">
 
-    <input type="password" id="password" placeholder="Password">
+        <div class="logo">
+            🛡 Women Safety
+        </div>
 
-   <input type="text" id="phone" placeholder="Phone Number">
+        <nav>
+
+            <a href="#">Home</a>
+
+            <a href="#features">Features</a>
+
+            <a href="#register">Register</a>
+
+            <a href="login.html">Login</a>
+
+        </nav>
+
+    </header>
 
 
-    <button onclick="registerUser()" id="register">Register</button>
 
-    <button onclick="window.location.href='login.html'">Login</button>
+    <!-- ================= HERO SECTION ================= -->
 
-    <button onclick="window.location.href='dashboard.html'" id="dashboard">Dashboard</button>
+    <section class="hero">
 
-<hr>
+        <div class="hero-text">
 
-    <button class="sos-btn" onclick="sendSOS()">
-    🚨 SOS EMERGENCY
-    </button>
+            <h1>Your Safety Is Our Priority</h1>
 
-    <p id="status"></p>
+            <p>
+
+                Women Safety & Emergency Assistance Platform helps women
+
+                send SOS alerts, manage emergency contacts and stay safe
+
+                with one click.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#register" class="btn-primary">
+
+                    Register Now
+
+                </a>
+
+                <a href="login.html" class="btn-secondary">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="hero-image">
+
+            <!-- <img src="https://undraw.co/api/illustrations/secure-login.svg"
+                 alt="Women Safety"> -->
+            <div class="hero-image">
+                <h2>🛡 Women Safety</h2>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= FEATURES ================= -->
+
+<section id="features" class="features">
+
+<h2>Our Features</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<h3>🚨 SOS Alert</h3>
+
+<p>Send emergency alerts instantly.</p>
 
 </div>
 
+<div class="feature-card">
+
+<h3>📍 Live Location</h3>
+
+<p>Share your location with trusted contacts.</p>
+
+</div>
+
+<div class="feature-card">
+
+<h3>👮 Police Support</h3>
+
+<p>Quick access to emergency services.</p>
+
+</div>
+
+<div class="feature-card">
+
+<h3>👨‍👩‍👧 Emergency Contacts</h3>
+
+<p>Manage your trusted contacts securely.</p>
+
+</div>
+
+</div>
+
+</section>
+<section id="register" class="register-section">
+
+<h2>Create Your Account</h2>
+
+<div class="container">
+
+<input type="text" id="name" placeholder="Full Name">
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="password" id="password" placeholder="Password">
+
+<input type="text" id="phone" placeholder="Phone Number">
+
+<button onclick="registerUser()" id="registerBtn">
+
+Register
+
+</button>
+
+<button onclick="window.location.href='login.html'">
+
+Already have an account? Login
+
+</button>
+
+</div>
+
+</section>
+<section class="sos-section">
+
+<h2>Emergency Assistance</h2>
+
+<button class="sos-btn" onclick="sendSOS()">
+
+🚨 SOS
+
+</button>
+
+<p id="status"></p>
+
+</section>
+
 <script src="script.js"></script>
+
 </body>
+
 </html>
