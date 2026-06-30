@@ -3,81 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Volunteer Registration</title>
-<link rel="stylesheet" href="style.css">
+    <title>Volunteer</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="navbar">
 
-<button onclick="window.location.href='dashboard.html'" id="dashboard">
-🏠 Dashboard
-</button>
+<header class="navbar">
 
-<button onclick="window.location.href='contacts.html'" id="Emergency">
-📞 Contacts
-</button>
+    <div class="logo">🤝 Volunteer Section</div>
 
-<button onclick="window.location.href='history.html'" id="Alert">
-📜 History
-</button>
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="Contacts.html">Contacts</a>
+        <a href="history.html">History</a>
+    </nav>
 
-<button onclick="window.location.href='volunteer.html'">
-🙋 Volunteers
-</button>
+</header>
 
-<button onclick="window.location.href='admin.html'" id="Admin">
-🛡 Admin
-</button>
+<section class="volunteer">
 
-</div>
+    <h2>Join as Volunteer</h2>
 
-<hr>
+    <div class="volunteer-box">
 
-<div class="container">
+        <input type="text" id="vname" placeholder="Your Name">
+        <input type="text" id="vphone" placeholder="Phone Number">
+        <input type="text" id="vcity" placeholder="City">
 
-<h1>Volunteer Registration</h1>
+        <button onclick="addVolunteer()">Join Now</button>
 
-<input type="text"
-id="name"
-placeholder="Volunteer Name">
+    </div>
 
-<input type="text"
-id="phone"
-placeholder="Phone Number">
+    <div id="volunteerList"></div>
 
-<input type="text"
-id="area"
-placeholder="Area">
+</section>
 
-<button onclick="registerVolunteer()">
-Register Volunteer
-</button>
-
-<hr>
-
-<h2>Registered Volunteers</h2>
-
-<div id="volunteers"></div>
-
-<hr>
-
-<h2>Emergency Alerts</h2>
-
-<div id="alerts"></div>
-
-  
-<hr>
-
-    
-<footer>
-        
-    <p>Women Safety & Emergency Assistance Platform © 2026</p>
-    
-</footer>
-
-</div>
-
-<script src="volunteer.js"></script>
+<script src="Volunteer.js"></script>
 
 </body>
 </html>

@@ -1,160 +1,60 @@
-function registerVolunteer(){
+function addVolunteer(){
 
-const name =
-document.getElementById("name").value;
+    const name = document.getElementById("vname").value;
+    const phone = document.getElementById("vphone").value;
+    const city = document.getElementById("vcity").value;
 
-const phone =
-document.getElementById("phone").value;
+    if(!name || !phone || !city){
+        alert("Please fill all fields");
+        return;
+    }
 
-const area =
-document.getElementById("area").value;
+    let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
 
-fetch("https://women-safety-backend-eyq2.onrender.com/volunteer",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-name,
-phone,
-area
-})
-})
-.then(res=>res.json())
-.then(data=>{
+    volunteers.push({ name, phone, city });
 
-alert(data.message);
+    localStorage.setItem("volunteers", JSON.stringify(volunteers));
 
-loadVolunteers();
+    document.getElementById("vname").value = "";
+    document.getElementById("vphone").value = "";
+    document.getElementById("vcity").value = "";
 
-});
-
+    loadVolunteers();
 }
 
 function loadVolunteers(){
 
-fetch("https://women-safety-backend-eyq2.onrender.com/volunteers")
-.then(res=>res.json())
-.then(data=>{
+    let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
 
-let output="";
+    const container = document.getElementById("volunteerList");
+    container.innerHTML = "";
 
-data.forEach(v=>{
+    volunteers.forEach((v, index)=>{
 
-output += `
-<p>
-<b>${v.name}</b>
-<br>
-${v.phone}
-<br>
-${v.area}
-<br>
-Status: ${v.status}
-</p>
-<hr>
-`;
+        const div = document.createElement("div");
+        div.className = "volunteer-card";
 
-});
+        div.innerHTML = `
+            <h3>🤝 ${v.name}</h3>
+            <p>📞 ${v.phone}</p>
+            <p>📍 ${v.city}</p>
+            <button onclick="deleteVolunteer(${index})">Remove</button>
+        `;
 
-document.getElementById("volunteers").innerHTML =
-output;
-
-});
-
+        container.appendChild(div);
+    });
 }
 
+function deleteVolunteer(index){
+
+    let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
+
+    volunteers.splice(index, 1);
+
+    localStorage.setItem("volunteers", JSON.stringify(volunteers));
+
+    loadVolunteers();
+}
+
+// page load
 loadVolunteers();
-
-function loadAlerts(){
-
-fetch("https://women-safety-backend-eyq2.onrender.com/alerts")
-.then(res=>res.json())
-.then(data=>{
-
-let output="";
-
-data.forEach(alert=>{
-
-output += `
-<p>
-Latitude: ${alert.latitude}
-<br>
-Longitude: ${alert.longitude}
-<br>
-Status: ${alert.status}
-<br><br>
-
-<button onclick="acceptAlert('${alert._id}')">
-Accept Alert
-</button>i
-
-<button onclick="completeAlert('${alert._id}')">
-Complete Alert
-</button>
-
-</p>
-<hr>
-`;
-
-});
-
-document.getElementById("alerts").innerHTML =
-output;
-
-});
-
-}
-
-function acceptAlert(id){
-
-fetch(`https://women-safety-backend-eyq2.onrender.com/alert/${id}`,{
-
-method:"PUT",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-status:"Accepted"
-})
-
-})
-.then(res=>res.json())
-.then(data=>{
-
-alert(data.message);
-
-loadAlerts();
-
-});
-
-}
-
-loadAlerts();
-
-function completeAlert(id){
-
-fetch(`https://women-safety-backend-eyq2.onrender.com/alert/${id}`,{
-
-method:"PUT",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-status:"Completed"
-})
-
-})
-.then(res=>res.json())
-.then(data=>{
-
-alert(data.message);
-
-loadAlerts();
-
-});
-
-}
