@@ -16,23 +16,25 @@ function loginUser(){
         body:JSON.stringify({email,password})
     })
     .then(res=>res.json())
-    .then(data=>{
+  .then(data=>{
 
-        if(data.token){
+    console.log(data);
 
-            localStorage.setItem("token",data.token);
+    if(data.success){
 
-            alert("Login Successful!");
+        localStorage.setItem("token", data.token);
 
-            window.location.href="dashboard.html";
+        alert("Login Successful!");
 
-        }else{
+        window.location.href="./dashboard.html";
 
-            alert(data.message || "Invalid Email or Password");
+    }else{
 
-        }
+        alert(data.message || "Invalid Email or Password");
 
-    })
+    }
+
+})
     .catch(err=>{
 
         console.log(err);

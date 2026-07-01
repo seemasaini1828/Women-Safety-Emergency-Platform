@@ -20,13 +20,14 @@ function registerUser(){
     .then(res => res.json())
     .then(data => {
 
-    if (data.message === "User Registered Successfully") {
+    if (data.success) {
 
         localStorage.setItem("name", name);
         localStorage.setItem("email", email);
         localStorage.setItem("phone", phone);
 
         alert("Registered Successfully!");
+        window.location.href = "login.html";
     }
     else {
         alert(data.message || "Registration Failed");

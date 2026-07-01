@@ -155,7 +155,8 @@ if(user){
 
 res.json({
 success:true,
-message:"Login Successful"
+message:"Login Successful",
+token:"dummy-token"
 });
 
 }
