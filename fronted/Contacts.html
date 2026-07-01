@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency Contacts</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,26 +20,38 @@
 
 <header class="navbar">
 
-    <div class="logo">📞 Emergency Contacts</div>
+    <div class="logo">🛡 Women Safety</div>
 
-    <nav>
+    <nav class="nav-links">
         <a href="dashboard.html">Dashboard</a>
-        <a href="history.html">History</a>
+        <a href="Contacts.html">Contacts</a>
         <a href="volunteer.html">Volunteer</a>
+        <a href="history.html">History</a>
+        <a href="profile.html">Profile</a>
+        <a href="index.html" onclick="logout()">Logout</a>
     </nav>
 
 </header>
 
 <section class="contacts">
 
-    <h2>Add Trusted Contact</h2>
+    <h2>Emergency Contacts</h2>
 
-    <div class="contact-box">
+    <div class="contact-card">
 
-        <input type="text" id="cname" placeholder="Contact Name">
-        <input type="text" id="cphone" placeholder="Phone Number">
+        <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="cname" placeholder="Contact Name">
+        </div>
 
-        <button onclick="addContact()">Add Contact</button>
+        <div class="input-group">
+            <i class="fa-solid fa-phone"></i>
+            <input type="text" id="cphone" placeholder="Phone Number">
+        </div>
+
+        <button onclick="addContact()">
+            Add Contact
+        </button>
 
     </div>
 

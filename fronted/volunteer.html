@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteer</title>
+    <title>Volunteer - Women Safety</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,27 +20,43 @@
 
 <header class="navbar">
 
-    <div class="logo">🤝 Volunteer Section</div>
+    <div class="logo">🛡 Women Safety</div>
 
-    <nav>
+    <nav class="nav-links">
         <a href="dashboard.html">Dashboard</a>
         <a href="Contacts.html">Contacts</a>
+        <a href="volunteer.html">Volunteer</a>
         <a href="history.html">History</a>
+        <a href="profile.html">Profile</a>
+        <a href="index.html" onclick="logout()">Logout</a>
     </nav>
 
 </header>
 
 <section class="volunteer">
 
-    <h2>Join as Volunteer</h2>
+    <h2>Become a Volunteer</h2>
 
-    <div class="volunteer-box">
+    <div class="volunteer-card">
 
-        <input type="text" id="vname" placeholder="Your Name">
-        <input type="text" id="vphone" placeholder="Phone Number">
-        <input type="text" id="vcity" placeholder="City">
+        <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="vname" placeholder="Full Name">
+        </div>
 
-        <button onclick="addVolunteer()">Join Now</button>
+        <div class="input-group">
+            <i class="fa-solid fa-phone"></i>
+            <input type="text" id="vphone" placeholder="Phone Number">
+        </div>
+
+        <div class="input-group">
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" id="vcity" placeholder="City">
+        </div>
+
+        <button onclick="addVolunteer()">
+            Register as Volunteer
+        </button>
 
     </div>
 
@@ -40,7 +64,7 @@
 
 </section>
 
-<script src="Volunteer.js"></script>
+<script src="volunteer.js"></script>
 
 </body>
 </html>

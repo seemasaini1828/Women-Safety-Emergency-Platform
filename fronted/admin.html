@@ -4,97 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="navbar">
 
-<button onclick="window.location.href='dashboard.html'" id="dashboard">
-🏠 Dashboard
-</button>
+<header class="navbar">
+    <div class="logo">🛡 Admin Panel</div>
 
-<button onclick="window.location.href='contacts.html'" id="Emergency">
-📞 Contacts
-</button>
+    <nav class="nav-links">
+        <a href="dashboard.html">User Panel</a>
+        <a href="index.html">Logout</a>
+    </nav>
+</header>
 
-<button onclick="window.location.href='history.html'" id="Alert">
-📜 History
-</button>
+<section class="admin">
 
-<button onclick="window.location.href='volunteer.html'">
-🙋 Volunteers
-</button>
+    <h2>System Overview</h2>
 
-<button onclick="window.location.href='admin.html'" id="Admin">
-🛡 Admin
-</button>
+    <div class="admin-cards">
 
-</div>
+        <div class="admin-card">
+            <h3>🚨 SOS Alerts</h3>
+            <p id="sosCount">0</p>
+        </div>
 
-<hr>
-<div class="container">
+        <div class="admin-card">
+            <h3>📞 Contacts</h3>
+            <p id="contactCount">0</p>
+        </div>
 
-<h1>Admin Dashboard</h1>
+        <div class="admin-card">
+            <h3>🤝 Volunteers</h3>
+            <p id="volunteerCount">0</p>
+        </div>
 
+    </div>
 
-<h2>Statistics</h2>
+</section>
 
-<div id="stats"></div>
-
-<hr>
-
-<h2>Registered Users</h2>
-
-<div id="users"></div>
-
-<hr>
-
-<footer>
-    <p>Women Safety & Emergency Assistance Platform © 2026</p>
-</footer>
-</div>
-
-
-<script>
-
-fetch("https://women-safety-backend-eyq2.onrender.com/stats")
-.then(res => res.json())
-.then(data => {
-
-document.getElementById("stats").innerHTML = `
-<p>Total Users: ${data.totalUsers}</p>
-<p>Total Alerts: ${data.totalAlerts}</p>
-<p>Total Contacts: ${data.totalContacts}</p>
-`;
-
-});
-
-fetch("https://women-safety-backend-eyq2.onrender.com/users")
-.then(res=>res.json())
-.then(data=>{
-
-let output="";
-
-data.forEach(user=>{
-
-output += `
-<p>
-${user.name}
-<br>
-${user.email}
-</p>
-<hr>
-`;
-
-});
-
-document.getElementById("users").innerHTML =
-output;
-
-});
-
-
-</script>
+<script src="admin.js"></script>
 
 </body>
 </html>

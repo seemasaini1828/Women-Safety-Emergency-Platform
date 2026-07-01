@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+🛡 Women Safety
+</div>
+
+<nav class="nav-links">
+
+<a href="dashboard.html">Dashboard</a>
+<a href="Contacts.html">Contacts</a>
+<a href="volunteer.html">Volunteer</a>
+<a href="history.html">History</a>
+<a href="profile.html">Profile</a>
+<a href="index.html" onclick="logout()">Logout</a>
+
+</nav>
+
+</header>
+
+<section class="profile">
+
+<div class="profile-card">
+
+<i class="fa-solid fa-circle-user"></i>
+
+<h2 id="pname">User Name</h2>
+
+<p id="pemail">Email</p>
+
+<p id="pphone">Phone</p>
+
+<button onclick="logout()">
+
+Logout
+
+</button>
+
+</div>
+
+</section>
+
+<script src="profile.js"></script>
+
+</body>
+
+</html>
