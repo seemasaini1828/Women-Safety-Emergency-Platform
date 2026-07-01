@@ -67,6 +67,16 @@ res.json(volunteers);
 
 });
 
+app.delete("/volunteer/:id", async (req, res) => {
+
+    await Volunteer.findByIdAndDelete(req.params.id);
+
+    res.json({
+        message: "Volunteer Deleted Successfully"
+    });
+
+});
+
 app.get("/contacts", async(req,res)=>{
 
 const contacts = await Contact.find();
