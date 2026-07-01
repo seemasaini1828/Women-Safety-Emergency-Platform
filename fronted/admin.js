@@ -1,22 +1,32 @@
-// ================= LOAD COUNTS =================
-if(!localStorage.getItem("token")){
+// ================= ADMIN LOGIN CHECK =================
+
+if (!localStorage.getItem("token")) {
     window.location.href = "login.html";
 }
 
-function loadAdminData(){
+// ================= LOAD ADMIN STATS =================
 
-    const sos = JSON.parse(localStorage.getItem("sosHistory")) || [];
-    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-    const volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
+function loadAdminData() {
 
-    document.getElementById("sosCount").innerText = sos.length;
-    document.getElementById("contactCount").innerText = contacts.length;
-    document.getElementById("volunteerCount").innerText = volunteers.length;
+    fetch("https://women-safety-backend-eyq2.onrender.com/stats")
+    .then(res => res.json())
+    .then(data => {
+
+        document.getElementById("userCount").innerText = data.totalUsers;
+        document.getElementById("sosCount").innerText = data.totalAlerts;
+        document.getElementById("contactCount").innerText = data.totalContacts;
+        document.getElementById("volunteerCount").innerText = data.totalVolunteers;
+
+    })
+    .catch(err => {
+        console.log("Error:", err);
+        alert("Unable to load admin statistics.");
+    });
+
 }
-
 
 // ================= PAGE LOAD =================
 
-window.onload = function(){
+window.onload = function () {
     loadAdminData();
 };
