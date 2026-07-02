@@ -13,71 +13,87 @@ function addContact() {
         return;
     }
 
-    let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-
-    // Duplicate check
-    const exists = contacts.find(contact => contact.phone === phone);
-
-    if (exists) {
-        alert("This contact already exists.");
-        return;
-    }
-
-    contacts.push({
+  fetch("https://women-safety-backend-eyq2.onrender.com/add-contact", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        userEmail: localStorage.getItem("email"),
         name: name,
         phone: phone
-    });
+    })
+})
+.then(res => res.json())
+.then(data => {
 
-    localStorage.setItem("contacts", JSON.stringify(contacts));
+    alert(data.message);
 
     document.getElementById("cname").value = "";
     document.getElementById("cphone").value = "";
 
     loadContacts();
 
-    alert("Contact added successfully!");
+})
+.catch(err => {
+    console.log(err);
+    alert("Unable to add contact.");
+});
 }
-
 
 // ================= LOAD CONTACTS =================
 
 function loadContacts() {
 
-    let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    fetch("https://women-safety-backend-eyq2.onrender.com/contacts?email=" + localStorage.getItem("email"))
 
-    const container = document.getElementById("contactList");
+    .then(res => res.json())
 
-    container.innerHTML = "";
+    .then(contacts => {
 
-    if (contacts.length === 0) {
+        const container = document.getElementById("contactList");
 
-        container.innerHTML = `
-            <p style="margin-top:20px;color:gray;">
-                No emergency contacts added yet.
-            </p>
-        `;
+        container.innerHTML = "";
 
-        return;
-    }
+        if (contacts.length === 0) {
 
-    contacts.forEach((contact, index) => {
+            container.innerHTML = `
+                <p style="margin-top:20px;color:gray;">
+                    No emergency contacts added yet.
+                </p>
+            `;
 
-        const div = document.createElement("div");
+            return;
+        }
 
-        div.className = "contact-item";
+        contacts.forEach(contact => {
 
-        div.innerHTML = `
-            <div>
-                <h3>👤 ${contact.name}</h3>
-                <p>📞 ${contact.phone}</p>
-            </div>
+            const div = document.createElement("div");
 
-            <button onclick="deleteContact(${index})">
-                <i class="fa-solid fa-trash"></i> Delete
-            </button>
-        `;
+            div.className = "contact-item";
 
-        container.appendChild(div);
+            div.innerHTML = `
+                <div>
+                    <h3>👤 ${contact.name}</h3>
+                    <p>📞 ${contact.phone}</p>
+                </div>
+
+                <button onclick="deleteContact('${contact._id}')">
+                    Delete
+                </button>
+            `;
+
+            container.appendChild(div);
+
+        });
+
+    })
+
+    .catch(err => {
+
+        console.log(err);
+
+        alert("Unable to load contacts.");
 
     });
 
@@ -86,9 +102,7 @@ function loadContacts() {
 
 // ================= DELETE CONTACT =================
 
-function deleteContact(index) {
-
-    let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+function deleteContact(id) {
 
     const confirmDelete = confirm("Are you sure you want to delete this contact?");
 
@@ -96,14 +110,31 @@ function deleteContact(index) {
         return;
     }
 
-    contacts.splice(index, 1);
+    fetch("https://women-safety-backend-eyq2.onrender.com/contact/" + id, {
 
-    localStorage.setItem("contacts", JSON.stringify(contacts));
+        method: "DELETE"
 
-    loadContacts();
+    })
+
+    .then(res => res.json())
+
+    .then(data => {
+
+        alert(data.message);
+
+        loadContacts();
+
+    })
+
+    .catch(err => {
+
+        console.log(err);
+
+        alert("Unable to delete contact.");
+
+    });
 
 }
-
 
 // ================= PAGE LOAD =================
 

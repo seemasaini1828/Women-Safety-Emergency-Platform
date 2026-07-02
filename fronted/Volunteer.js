@@ -14,23 +14,22 @@ function addVolunteer() {
         return;
     }
 
-    let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
+ fetch("https://women-safety-backend-eyq2.onrender.com/volunteer", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        userEmail: localStorage.getItem("email"),
+        name: name,
+        phone: phone,
+        area: city
+    })
+})
+.then(res => res.json())
+.then(data => {
 
-    // Duplicate check
-    const exists = volunteers.find(v => v.phone === phone);
-
-    if (exists) {
-        alert("Volunteer already exists.");
-        return;
-    }
-
-    volunteers.push({
-        name,
-        phone,
-        city
-    });
-
-    localStorage.setItem("volunteers", JSON.stringify(volunteers));
+    alert(data.message);
 
     document.getElementById("vname").value = "";
     document.getElementById("vphone").value = "";
@@ -38,50 +37,71 @@ function addVolunteer() {
 
     loadVolunteers();
 
-    alert("Volunteer registered successfully!");
-}
+})
+.catch(err => {
 
+    console.log(err);
+
+    alert("Unable to register volunteer.");
+
+});
+}
 
 // ================= LOAD VOLUNTEERS =================
 
 function loadVolunteers() {
 
-    let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
+    fetch("https://women-safety-backend-eyq2.onrender.com/volunteers")
 
-    const container = document.getElementById("volunteerList");
+    .then(res => res.json())
 
-    container.innerHTML = "";
+    .then(volunteers => {
 
-    if (volunteers.length === 0) {
+        const container = document.getElementById("volunteerList");
 
-        container.innerHTML = `
-            <p style="color:gray;margin-top:20px;">
-                No volunteers registered yet.
-            </p>
-        `;
+        container.innerHTML = "";
 
-        return;
-    }
+        if (volunteers.length === 0) {
 
-    volunteers.forEach((volunteer, index) => {
+            container.innerHTML = `
+                <p style="color:gray;margin-top:20px;">
+                    No volunteers registered yet.
+                </p>
+            `;
 
-        const div = document.createElement("div");
+            return;
+        }
 
-        div.className = "volunteer-item";
+        volunteers.forEach(volunteer => {
 
-        div.innerHTML = `
-            <div>
-                <h3>👤 ${volunteer.name}</h3>
-                <p>📞 ${volunteer.phone}</p>
-                <p>📍 ${volunteer.city}</p>
-            </div>
+            const div = document.createElement("div");
 
-            <button onclick="deleteVolunteer(${index})">
-                <i class="fa-solid fa-trash"></i> Delete
-            </button>
-        `;
+            div.className = "volunteer-item";
 
-        container.appendChild(div);
+            div.innerHTML = `
+                <div>
+                    <h3>👤 ${volunteer.name}</h3>
+                    <p>📞 ${volunteer.phone}</p>
+                    <p>📍 ${volunteer.area}</p>
+                    <p>🟢 ${volunteer.status}</p>
+                </div>
+
+                <button onclick="deleteVolunteer('${volunteer._id}')">
+                    Delete
+                </button>
+            `;
+
+            container.appendChild(div);
+
+        });
+
+    })
+
+    .catch(err => {
+
+        console.log(err);
+
+        alert("Unable to load volunteers.");
 
     });
 
@@ -90,19 +110,35 @@ function loadVolunteers() {
 
 // ================= DELETE VOLUNTEER =================
 
-function deleteVolunteer(index) {
-
-    let volunteers = JSON.parse(localStorage.getItem("volunteers")) || [];
+function deleteVolunteer(id) {
 
     const confirmDelete = confirm("Delete this volunteer?");
 
     if (!confirmDelete) return;
 
-    volunteers.splice(index, 1);
+    fetch("https://women-safety-backend-eyq2.onrender.com/volunteer/" + id, {
 
-    localStorage.setItem("volunteers", JSON.stringify(volunteers));
+        method: "DELETE"
 
-    loadVolunteers();
+    })
+
+    .then(res => res.json())
+
+    .then(data => {
+
+        alert(data.message);
+
+        loadVolunteers();
+
+    })
+
+    .catch(err => {
+
+        console.log(err);
+
+        alert("Unable to delete volunteer.");
+
+    });
 
 }
 

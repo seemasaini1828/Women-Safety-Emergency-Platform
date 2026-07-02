@@ -5,38 +5,59 @@ if(!localStorage.getItem("token")){
 
 function loadHistory() {
 
-    const history = JSON.parse(localStorage.getItem("sosHistory")) || [];
+    fetch("https://women-safety-backend-eyq2.onrender.com/alerts?email=" + localStorage.getItem("email"))
 
-    const container = document.getElementById("historyList");
+    .then(res => res.json())
 
-    container.innerHTML = "";
+    .then(history => {
 
-    if (history.length === 0) {
+        const container = document.getElementById("historyList");
 
-        container.innerHTML = `
-            <p style="color:gray;font-size:18px;">
-                No SOS history found.
-            </p>
-        `;
+        container.innerHTML = "";
 
-        return;
-    }
+        if(history.length === 0){
 
-    history.slice().reverse().forEach(item => {
+            container.innerHTML = `
+                <p style="color:gray;font-size:18px;">
+                    No SOS history found.
+                </p>
+            `;
 
-        const div = document.createElement("div");
+            return;
+        }
 
-        div.className = "history-card";
+        history.reverse().forEach(item => {
 
-        div.innerHTML = `
-            <h3>🚨 SOS Alert</h3>
-            <p>📅 Time: ${item.time}</p>
-            <p>📍 Latitude: ${item.latitude}</p>
-            <p>📍 Longitude: ${item.longitude}</p>
-        `;
+            const div = document.createElement("div");
 
-        container.appendChild(div);
+            div.className = "history-card";
+
+            div.innerHTML = `
+                <h3>🚨 SOS Alert</h3>
+
+                <p>📅 ${new Date(item.createdAt).toLocaleString()}</p>
+
+                <p>📍 Latitude : ${item.latitude}</p>
+
+                <p>📍 Longitude : ${item.longitude}</p>
+
+                <p>Status : ${item.status}</p>
+            `;
+
+            container.appendChild(div);
+
+        });
+
+    })
+
+    .catch(err=>{
+
+        console.log(err);
+
+        alert("Unable to load history.");
+
     });
+
 }
 
 
@@ -44,14 +65,36 @@ function loadHistory() {
 
 function clearHistory() {
 
-    if (confirm("Are you sure you want to clear all history?")) {
+    if(!confirm("Are you sure you want to clear all history?")){
 
-        localStorage.removeItem("sosHistory");
+        return;
+
+    }
+
+    fetch("https://women-safety-backend-eyq2.onrender.com/alerts?email=" + localStorage.getItem("email"),{
+
+        method:"DELETE"
+
+    })
+
+    .then(res=>res.json())
+
+    .then(data=>{
+
+        alert(data.message);
 
         loadHistory();
 
-        alert("History cleared successfully!");
-    }
+    })
+
+    .catch(err=>{
+
+        console.log(err);
+
+        alert("Unable to clear history.");
+
+    });
+
 }
 
 

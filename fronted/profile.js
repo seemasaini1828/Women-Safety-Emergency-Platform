@@ -1,5 +1,6 @@
 // ================= CHECK LOGIN =================
 if(!localStorage.getItem("token")){
+    alert("Please login first.");
     window.location.href = "login.html";
 }
 
@@ -35,7 +36,11 @@ function logout() {
         return;
     }
 
+    
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("phone");
 
     alert("Logged out successfully.");
 

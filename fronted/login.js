@@ -23,6 +23,7 @@ function loginUser(){
     if(data.success){
 
         localStorage.setItem("token", data.token);
+        localStorage.setItem("email", email);
 
         alert("Login Successful!");
 

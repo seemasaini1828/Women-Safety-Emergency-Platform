@@ -27,7 +27,11 @@ const Volunteer =require("./models/Volunteer");
 
 app.get("/alerts", async (req, res) => {
 
-    const alerts = await Alert.find();
+    const alerts = await Alert.find({
+
+        userEmail: req.query.email
+
+    });
 
     res.json(alerts);
 
@@ -58,30 +62,47 @@ totalVolunteers
 
 });
 
-app.get("/volunteers", async(req,res)=>{
+app.get("/volunteers", async (req, res) => {
 
-const volunteers =
-await Volunteer.find();
+    const email = req.query.email;
 
-res.json(volunteers);
+    const volunteers = await Volunteer.find({
+        userEmail: email
+    });
+
+    res.json(volunteers);
 
 });
 
 app.delete("/volunteer/:id", async (req, res) => {
 
-    await Volunteer.findByIdAndDelete(req.params.id);
+    try {
 
-    res.json({
-        message: "Volunteer Deleted Successfully"
-    });
+        await Volunteer.findByIdAndDelete(req.params.id);
+
+        res.json({
+            message: "Volunteer Deleted Successfully"
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
 
 });
 
-app.get("/contacts", async(req,res)=>{
+app.get("/contacts", async (req, res) => {
 
-const contacts = await Contact.find();
+    const email = req.query.email;
 
-res.json(contacts);
+    const contacts = await Contact.find({
+        userEmail: email
+    });
+
+    res.json(contacts);
 
 });
 
@@ -121,19 +142,25 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.post("/sos", async(req,res)=>{
+app.post("/sos", async (req, res) => {
 
-const alert = new Alert({
-latitude:req.body.latitude,
-longitude:req.body.longitude,
-status:"Pending"
-});
+    const alert = new Alert({
 
-await alert.save();
+        userEmail: req.body.userEmail,
 
-res.json({
-message:"SOS Alert Sent"
-});
+        latitude: req.body.latitude,
+
+        longitude: req.body.longitude,
+
+        status: "Pending"
+
+    });
+
+    await alert.save();
+
+    res.json({
+        message: "SOS Alert Sent"
+    });
 
 });
 
@@ -143,7 +170,6 @@ app.post("/add-contact", async (req, res) => {
         userEmail: req.body.userEmail,
         name: req.body.name,
         phone: req.body.phone,
-        relation: req.body.relation
     });
 
     await contact.save();
@@ -181,19 +207,32 @@ message:"Invalid Email or Password"
 
 });
 
-app.post("/volunteer", async(req,res)=>{
+app.post("/volunteer", async (req, res) => {
 
-const volunteer = new Volunteer({
-name:req.body.name,
-phone:req.body.phone,
-area:req.body.area
-});
+    try {
 
-await volunteer.save();
+        const volunteer = new Volunteer({
+            userEmail: req.body.userEmail,
+            name: req.body.name,
+            phone: req.body.phone,
+            area: req.body.area
+        });
 
-res.json({
-message:"Volunteer Registered Successfully"
-});
+        await volunteer.save();
+
+        res.json({
+            success: true,
+            message: "Volunteer Registered Successfully"
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+
+    }
 
 });
 
@@ -209,6 +248,28 @@ status:req.body.status
 res.json({
 message:"Alert Updated Successfully"
 });
+
+});
+
+app.delete("/alerts", async (req, res) => {
+
+    try {
+
+        await Alert.deleteMany({
+            userEmail: req.query.email
+        });
+
+        res.json({
+            message: "History Cleared Successfully"
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
 
 });
 

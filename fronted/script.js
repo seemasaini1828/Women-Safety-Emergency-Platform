@@ -69,10 +69,12 @@ function sendSOS(){
         headers:{
           "Content-Type":"application/json"
     },
-    body:JSON.stringify({
-        latitude:lat,
-        longitude:lng
-    })
+   body: JSON.stringify({
+
+    userEmail: localStorage.getItem("email"),
+    latitude: lat,
+    longitude: lng
+   })
 })
     .then(() => {
         document.getElementById("status").innerText =
@@ -94,6 +96,10 @@ function sendSOS(){
 
 function logout(){
     localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    localStorage.removeItem("name");
+    localStorage.removeItem("phone");
+
     window.location.href = "login.html";
 }
 
@@ -102,6 +108,17 @@ if(window.location.pathname.includes("history.html")){
     const history = JSON.parse(localStorage.getItem("sosHistory")) || [];
 
     const container = document.getElementById("historyList");
+    if(history.length === 0){
+
+    container.innerHTML = `
+        <p style="text-align:center;">
+            No SOS Alerts Found
+        </p>
+    `;
+
+    return;
+
+}
 
     history.slice().reverse().forEach(item=>{
 
