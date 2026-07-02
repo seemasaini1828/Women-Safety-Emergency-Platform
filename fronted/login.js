@@ -19,17 +19,20 @@ function loginUser(){
   .then(data=>{
 
     console.log(data);
+if(data.success){
 
-    if(data.success){
+    localStorage.setItem("token", data.token);
 
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("email", email);
+    localStorage.setItem("name", data.user.name);
+    localStorage.setItem("email", data.user.email);
+    localStorage.setItem("phone", data.user.phone);
 
-        alert("Login Successful!");
+    alert("Login Successful!");
 
-        window.location.href="./dashboard.html";
+    window.location.href = "./dashboard.html";
 
-    }else{
+}
+    else{
 
         alert(data.message || "Invalid Email or Password");
 

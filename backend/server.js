@@ -179,31 +179,35 @@ app.post("/add-contact", async (req, res) => {
     });
 
 });
+app.post("/login", async (req, res) => {
 
-app.post("/login", async (req,res)=>{
+    const user = await User.findOne({
+        email: req.body.email,
+        password: req.body.password
+    });
 
-const user = await User.findOne({
-email:req.body.email,
-password:req.body.password
-});
+    if (user) {
 
-if(user){
+        res.json({
+            success: true,
+            message: "Login Successful",
+            token: "dummy-token",
 
-res.json({
-success:true,
-message:"Login Successful",
-token:"dummy-token"
-});
+            user: {
+                name: user.name,
+                email: user.email,
+                phone: user.phone
+            }
+        });
 
-}
-else{
+    } else {
 
-res.json({
-success:false,
-message:"Invalid Email or Password"
-});
+        res.json({
+            success: false,
+            message: "Invalid Email or Password"
+        });
 
-}
+    }
 
 });
 
