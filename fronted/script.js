@@ -103,35 +103,3 @@ function logout(){
     window.location.href = "login.html";
 }
 
-if(window.location.pathname.includes("history.html")){
-
-    const history = JSON.parse(localStorage.getItem("sosHistory")) || [];
-
-    const container = document.getElementById("historyList");
-    if(history.length === 0){
-
-    container.innerHTML = `
-        <p style="text-align:center;">
-            No SOS Alerts Found
-        </p>
-    `;
-
-    return;
-
-}
-
-    history.slice().reverse().forEach(item=>{
-
-        const div = document.createElement("div");
-        div.className = "history-card";
-
-        div.innerHTML = `
-            <h3>🚨 Emergency Alert</h3>
-            <p>📅 Time: ${item.time}</p>
-            <p>📍 Latitude: ${item.latitude}</p>
-            <p>📍 Longitude: ${item.longitude}</p>
-        `;
-
-        container.appendChild(div);
-    });
-}
